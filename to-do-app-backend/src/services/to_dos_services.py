@@ -16,3 +16,11 @@ def post_note(note):
 #Put updates note
 def update_note(note_id, note):
     dao.update_note(note_id, note)
+
+#Delete a single note
+def delete_note(note_id):
+    dao.delete_note(note_id)
+
+#Delete all notes
+def delete_all_notes():
+    dao.delete_all_notes()

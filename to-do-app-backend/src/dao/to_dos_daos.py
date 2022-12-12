@@ -26,7 +26,27 @@ def update_note(note_id, note):
     try:
         con = db_connection()
         cur = con.cursor()
-        cur.execute(f'update to_do_note set to_do_note = %s where (to_do_id = %s)', (note, note_id))
+        cur.execute('update to_do_note set to_do_note = %s where (to_do_id = %s)', (note, note_id))
+        con.commit()
+    finally:
+        con.close()
+
+#Delete note
+def delete_note(note_id):
+    try:
+        con = db_connection()
+        cur = con.cursor()
+        cur.execute('delete from to_do_note where (to_do_id = %s)', (note_id,))
+        con.commit()
+    finally:
+        con.close()
+
+#Delete all notes
+def delete_all_notes():
+    try:
+        con = db_connection()
+        cur = con.cursor()
+        cur.execute('delete from to_do_note')
         con.commit()
     finally:
         con.close()
