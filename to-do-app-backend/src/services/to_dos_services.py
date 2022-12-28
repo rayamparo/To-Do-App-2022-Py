@@ -2,9 +2,9 @@ import src.dao.to_dos_daos as dao
 from src.models.to_dos_model import ToDo
 
 #Gets all notes
-def get_notes():
+def get_notes(user_id):
     notes_dict = {}
-    notes = dao.get_notes()
+    notes = dao.get_notes(user_id)
     for note in notes:
         notes_dict[note[0]] = ToDo(note[0], note[1])
     return notes_dict

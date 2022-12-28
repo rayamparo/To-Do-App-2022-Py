@@ -1,11 +1,11 @@
 from src.utils.db import db_connection
 
 #Gets all notes
-def get_notes():
+def get_notes(user_id):
     try:
         con = db_connection()
         cur = con.cursor()
-        cur.execute('select * from to_do_note')
+        cur.execute('select * from to_do_note where (owner_id = %s)', (user_id,))
         query_row = cur.fetchall()
         return query_row
     finally:
